@@ -11,19 +11,19 @@ Demuxer::~Demuxer(){
 
 
 bool Demuxer::Open(const std::string& filepath){
-
+    
     formatCtx_=nullptr;
-
+    
     int result=avformat_open_input(&formatCtx_,filepath.c_str(),nullptr,nullptr);
-
+    
     if(result<0)
     {
         qDebug()<<"avformat_open_input is error";
         avformat_close_input(&formatCtx_);
         return false;
     }
-
-
+    
+    
     result=avformat_find_stream_info(formatCtx_,nullptr);
     if(result<0)
     {
@@ -31,21 +31,21 @@ bool Demuxer::Open(const std::string& filepath){
         avformat_close_input(&formatCtx_);
         return false;
     }
-
+    
     for(unsigned int i=0;i<formatCtx_->nb_streams;i++)
     {
         //视频流
-        if(formatCtx_->streams[i]->codecpar->codec_type==AVMEDIA_TYPE_VIDEO)
+        if(formatCtx_->streams[i]->codecpar->codec_type==AVMEDIA_TYPE_VIDEO&&videoIndex_==-1)
         {
             videoIndex_=i;
         }
-        else if(formatCtx_->streams[i]->codecpar->codec_type==AVMEDIA_TYPE_AUDIO)//音频流
+        else if(formatCtx_->streams[i]->codecpar->codec_type==AVMEDIA_TYPE_AUDIO&&audioIndex_==-1)//音频流
         {
             audioIndex_=i;
         }
         //TODO 字幕流/数据流
     }
-
+    
     return true;
 }
 
@@ -53,8 +53,11 @@ bool Demuxer::Open(const std::string& filepath){
 void Demuxer::Close(){
     if(formatCtx_)
     {
-        formatCtx_=nullptr;
+        avformat_close_input(&formatCtx_);
     }
+
+    videoIndex_=-1;
+    audioIndex_=-1;
 }
 
 int64_t Demuxer::Duration() const {
@@ -63,11 +66,11 @@ int64_t Demuxer::Duration() const {
 }
 
 int Demuxer::videoStreamIndex() const {
-    return videoIndex_;
+    return videoIndex_;  
 }
 
 int Demuxer::audioStreamIndex() const{
-    return audioIndex_;
+    return audioIndex_;  
 }
 
 //编解码参数
@@ -84,4 +87,9 @@ AVCodecParameters* Demuxer::GetAudioCodecParams(){
 AVRational Demuxer::GetVideoTimeBase() {
     if (videoIndex_ < 0) return {0, 1};
     return formatCtx_->streams[videoIndex_]->time_base;
+}
+
+AVRational Demuxer::GetAudioTimeBase() {
+    if (audioIndex_ < 0) return {0, 1};
+    return formatCtx_->streams[audioIndex_]->time_base;
 }

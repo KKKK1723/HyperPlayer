@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <QDebug>
 #include "mainwindow.h"
-#include "Demuxer.h"
+#include "demuxer.h"
 
 extern "C"{
 #include<libavformat/avformat.h>
