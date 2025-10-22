@@ -12,10 +12,13 @@ SOURCES += \
     demuxer.cpp \
     main.cpp \
     mainwindow.cpp \
+    videodecoder.cpp
 
 HEADERS += \
+    const.h \
     demuxer.h \
-    mainwindow.h
+    mainwindow.h \
+    videodecoder.h
 
 FORMS += \
     mainwindow.ui

@@ -1,8 +1,6 @@
 #ifndef DEMUXER_H
 #define DEMUXER_H
 
-
-
 #include<QDebug>
 extern "C"{
 #include<libavformat/avformat.h>
@@ -44,7 +42,7 @@ public:
     AVRational GetVideoTimeBase();
     AVRational GetAudioTimeBase();
     
-private:
+//private:
     AVFormatContext* formatCtx_ = nullptr;
     int videoIndex_ = -1;
     int audioIndex_ = -1;
