@@ -119,3 +119,6 @@ Desktop.ini
 *.bak
 *.swp
 *~
+
+*.md
+!README.md
