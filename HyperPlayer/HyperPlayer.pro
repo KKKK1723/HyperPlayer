@@ -9,19 +9,28 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    demuxer.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    videodecoder.cpp
+    src/main.cpp \
+    src/demux/demuxer.cpp \
+    src/decode/videodecoder.cpp \
+    src/ui/mainwindow.cpp
 
 HEADERS += \
-    const.h \
-    demuxer.h \
-    mainwindow.h \
-    videodecoder.h
+    src/const.h \
+    src/demux/demuxer.h \
+    src/decode/videodecoder.h \
+    src/ui/mainwindow.h
 
 FORMS += \
-    mainwindow.ui
+    src/ui/mainwindow.ui
+
+# 添加头文件搜索路径
+INCLUDEPATH += $$PWD/src \
+               $$PWD/src/core \
+               $$PWD/src/demux \
+               $$PWD/src/decode \
+               $$PWD/src/output \
+               $$PWD/src/ui \
+               $$PWD/src/controller
 
 
 # ----------------- FFmpeg 配置 -----------------

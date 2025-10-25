@@ -122,3 +122,7 @@ Desktop.ini
 
 *.md
 !README.md
+*.pdf
+
+# 代码缓存以及代码智能提示文件
+.qtc_clangd

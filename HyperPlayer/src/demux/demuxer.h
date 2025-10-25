@@ -1,9 +1,9 @@
 #ifndef DEMUXER_H
 #define DEMUXER_H
 
-#include<QDebug>
+#include <QDebug>
 extern "C"{
-#include<libavformat/avformat.h>
+#include <libavformat/avformat.h>
 #include <libavcodec/avcodec.h>
 #include <libavutil/avutil.h>
 #include <libswscale/swscale.h>

@@ -1,7 +1,7 @@
 #ifndef VIDEODECODER_H
 #define VIDEODECODER_H
 
-#include"const.h"
+#include "const.h"
 
 //视频解码器
 class VideoDecoder

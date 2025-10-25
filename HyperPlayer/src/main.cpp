@@ -1,8 +1,9 @@
 #include "mainwindow.h"
 #include "demuxer.h"
-#include"const.h"
-#include"videodecoder.h"
-#include"QLabel"
+#include "const.h"
+#include "videodecoder.h"
+#include <QApplication>
+#include <QLabel>
 
 int main(int argc, char *argv[])
 {
