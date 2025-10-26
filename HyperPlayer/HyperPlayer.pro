@@ -12,12 +12,15 @@ SOURCES += \
     src/main.cpp \
     src/demux/demuxer.cpp \
     src/decode/videodecoder.cpp \
+    src/core/thread.cpp\
     src/ui/mainwindow.cpp
+
 
 HEADERS += \
     src/const.h \
     src/demux/demuxer.h \
     src/decode/videodecoder.h \
+    src/core/thread.h\
     src/ui/mainwindow.h
 
 FORMS += \
