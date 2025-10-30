@@ -18,6 +18,7 @@ SOURCES += \
 
 HEADERS += \
     src/const.h \
+    src/core/safequeue.h \
     src/demux/demuxer.h \
     src/decode/videodecoder.h \
     src/core/thread.h\

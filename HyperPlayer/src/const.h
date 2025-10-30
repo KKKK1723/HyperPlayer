@@ -3,6 +3,11 @@
 
 #include <QApplication>
 #include <QDebug>
+#include<mutex>
+#include<queue>
+#include<condition_variable>
+#include<chrono>
+
 
 extern "C"{
 #include<libavformat/avformat.h>
