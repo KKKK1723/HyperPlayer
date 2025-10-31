@@ -9,6 +9,8 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/core/avframequeue.cpp \
+    src/core/avpacketqueue.cpp \
     src/main.cpp \
     src/demux/demuxer.cpp \
     src/decode/videodecoder.cpp \
@@ -18,6 +20,8 @@ SOURCES += \
 
 HEADERS += \
     src/const.h \
+    src/core/avframequeue.h \
+    src/core/avpacketqueue.h \
     src/core/safequeue.h \
     src/demux/demuxer.h \
     src/decode/videodecoder.h \
